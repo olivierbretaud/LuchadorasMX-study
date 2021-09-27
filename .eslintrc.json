@@ -1,3 +1,21 @@
 {
-  "extends": "next/core-web-vitals"
-}
+  "plugins": ["@typescript-eslint"], // Add
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended" // Add
+  ],
+  "rules": {   
+    "no-plusplus": "off",
+    "no-console": "off",
+    "no-underscore-dangle": "off",
+    "react/prop-types": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "explicit-module-boundary-types": "off"
+  },
+  "env": {
+    "browser": true
+  }
+} 
