@@ -1,9 +1,10 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import styles from '../styles/Home.module.scss'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Dataviz from '../components/Dataviz/Dataviz';
+import { data } from '../constants/data';
+import styles from '../styles/Home.module.scss';
 
-const Home: NextPage = () => {
-  return (
+const Home: NextPage = () => (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -12,11 +13,12 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-
+        <Dataviz
+            data={data}
+          />
       </main>
 
     </div>
-  )
-}
+);
 
-export default Home
+export default Home;
