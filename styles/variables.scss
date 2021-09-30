@@ -1,0 +1,18 @@
+$dark : #05050F;
+$primary-dark: #0F424C;
+$white: #FFFFFF;
+$primary : #02AFAA;
+
+@mixin transition {
+  transition: all 0.2s ease-in-out;
+}
+
+@mixin btn {
+  text-align: center;
+	cursor: pointer;
+	font-family: "Roboto-Regular";
+	transition: all 0.2s ease-in-out;
+	background-color: transparent;
+  outline: none;
+  border: none;
+}
