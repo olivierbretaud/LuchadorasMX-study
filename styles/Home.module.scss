@@ -1,9 +1,18 @@
+@import './variables.scss';
+
 .container {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: $bg-color;
+  main {
+    @include transition;
+    width: 100%;
+    position: relative;
+  }
 }
 

@@ -2,24 +2,34 @@
 
 .container {
   position: relative;
-  background-color: $dark;
   height: 100vh;
   width: 100%;
   @include transition;
   svg {
     position: absolute;
     transform-origin: 0 0;
+    line {
+      display: none;
+    }
   }
   .node {
     position: absolute;
     transform-origin: 0 0;
     pointer-events: none;
-    background-color: red;
-    width: 20px;
-    height: 20px;
-    border-radius: 20px;
+    // &:hover {
+    //   background-color: red;
+    // }
     &.not-active {
       opacity: 0.3;
     }
+  }
+}
+
+.graph {
+  height: 100vh;
+  max-height: 100%;
+  width: 100vw;
+  canvas {
+    max-width: 100%;
   }
 }

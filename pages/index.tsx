@@ -1,10 +1,27 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
-import Dataviz from '../components/Dataviz/Dataviz';
-import { data } from '../constants/data';
+import { useEffect, useState } from 'react';
+import Nodes from '../components/Nodes/Nodes';
+import dataSet from '../constants/data.json';
 import styles from '../styles/Home.module.scss';
+import Panel from '../components/Panel/Panel';
 
-const Home: NextPage = () => (
+const Home: NextPage = () => {
+  const [filteredDatas, setFilteredData] = useState();
+  const router = useRouter();
+  const { post } = router.query;
+
+  const data : any = dataSet;
+  const postData = data.nodes?.find((n : any) => n.id === post);
+
+  useEffect(() => {
+    if (!data.nodes) return;
+    setFilteredData(data);
+  }, [data]);
+
+  return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -12,13 +29,17 @@ const Home: NextPage = () => (
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <Dataviz
-            data={data}
-          />
+      <main className={`${styles.main} ${postData ? styles['panel-is-active'] : ''}`}>
+        {filteredDatas
+          && <Nodes
+              data={filteredDatas}
+            />
+        }
       </main>
+      <Panel post={postData} />
 
     </div>
-);
+  );
+};
 
 export default Home;
