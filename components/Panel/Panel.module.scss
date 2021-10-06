@@ -7,27 +7,15 @@
   width: 400px;
   right: 20px;
   top: 20px;
+  overflow-y: auto;
   transform: translateX(440px);
-  border-radius: $radius;
+  border-radius: 15px;
   background-color: $white;
   &.is-open {
     transform: translateX(0px);
   }
   .post {
-    overflow: auto;
-    position:relative;
-    height: 400px;
     margin: 10px; 
-    border-radius: $radius;
-    iframe {
-      left:0;
-      top:0;
-      border: none;
-      min-height: 650px;
-      margin-bottom: 20px;
-      height: auto;
-      width:100%;
-      position:absolute;
-    }
+    border-radius: 8px;
   }
 }
