@@ -63,8 +63,8 @@ export default function Nodes({ data }: DatavizProps): JSX.Element {
 
     const simulation = d3.forceSimulation<SimulationNodeDatum, SimulationLinkDatum>()
       .force('center', d3.forceCenter((widthDpr / 2) / dpr, ((heightDpr / 2) / dpr)))
-      .force('x', d3.forceX(widthDpr / 2).strength(0.6))
-      .force('y', d3.forceY(heightDpr / 2).strength(0.6))
+      .force('x', d3.forceX((widthDpr / 2) / dpr).strength(0.4))
+      .force('y', d3.forceY((heightDpr / 2) / dpr).strength(0.4))
       .force('charge', d3.forceManyBody().strength(-55))
       .force('link', d3.forceLink().id((d : any) => d.id))
       .force('collision', d3.forceCollide(12).strength(1).radius((d :any) => d.size * 1.4))

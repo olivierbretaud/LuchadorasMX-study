@@ -18,8 +18,14 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     if (!data.nodes) return;
-    setFilteredData(data);
-  }, [data]);
+    const filtered = { ...data };
+    if (post) {
+      filtered.nodes = filtered.nodes.filter((n : any) => n.id === post || n.post === post);
+      filtered.links = filtered.links.filter((l : any) => l.source === post || l.target === post);
+    }
+
+    setFilteredData(filtered);
+  }, [data, post]);
 
   return (
     <div className={styles.container}>
@@ -32,6 +38,7 @@ const Home: NextPage = () => {
       <main className={`${styles.main} ${postData ? styles['panel-is-active'] : ''}`}>
         {filteredDatas
           && <Nodes
+              post={post}
               data={filteredDatas}
             />
         }
