@@ -20,8 +20,17 @@ const Home: NextPage = () => {
     if (!data.nodes) return;
     const filtered = { ...data };
     if (post) {
-      filtered.nodes = filtered.nodes.filter((n : any) => n.id === post || n.post === post);
-      filtered.links = filtered.links.filter((l : any) => l.source === post || l.target === post);
+      filtered.nodes = filtered.nodes.filter((n : any) => n.id === post
+      || n.post === post
+      || n?.posts?.find((p :string) => p === post));
+      filtered.links = filtered.links.filter((l : any) => {
+        const author = filtered.nodes.find((n : any) => n.id === l.target && post === l.source);
+        console.log(l, author);
+        if (author?.id === l.target || author?.id === l.source) {
+          return l;
+        }
+        return null;
+      });
     }
 
     setFilteredData(filtered);

@@ -61,15 +61,26 @@ export default function Nodes({ data }: DatavizProps): JSX.Element {
 
     context?.scale(dpr, dpr);
 
-    const simulation = d3.forceSimulation<SimulationNodeDatum, SimulationLinkDatum>()
-      .force('center', d3.forceCenter((widthDpr / 2) / dpr, ((heightDpr / 2) / dpr)))
-      .force('x', d3.forceX((widthDpr / 2) / dpr).strength(0.4))
-      .force('y', d3.forceY((heightDpr / 2) / dpr).strength(0.4))
+    const simulation = d3.forceSimulation<
+      SimulationNodeDatum,
+      SimulationLinkDatum<SimulationNodeDatum>
+      >()
+      .force('center', d3.forceCenter((widthDpr / 2) / dpr, ((heightDpr / 2) / dpr) - 30))
+      .force('x', d3.forceX(widthDpr / 2).strength(0.1))
+      .force('y', d3.forceY(heightDpr / 2).strength(0.1))
       .force('charge', d3.forceManyBody().strength(-55))
-      .force('link', d3.forceLink().id((d : any) => d.id))
-      .force('collision', d3.forceCollide(12).strength(1).radius((d :any) => d.size * 1.4))
+      .force('link', d3.forceLink().id((d :any) => d.id).strength(0.8).distance(70))
+      .force('collision', d3.forceCollide().radius((d :any) => d.size * 1.6))
       .alphaTarget(0)
       .alphaDecay(0.05);
+      // .force('center', d3.forceCenter((widthDpr / 2) / dpr, ((heightDpr / 2) / dpr)))
+      // .force('x', d3.forceX((widthDpr / 2) / dpr).strength(0.4))
+      // .force('y', d3.forceY((heightDpr / 2) / dpr).strength(0.4))
+      // .force('charge', d3.forceManyBody().strength(-55))
+      // .force('link', d3.forceLink().id((d : any) => d.id))
+      // .force('collision', d3.forceCollide(12).strength(1).radius((d :any) => d.size * 1.4))
+      // .alphaTarget(0)
+      // .alphaDecay(0.05);
 
     let transform = d3.zoomIdentity;
 
@@ -151,7 +162,7 @@ export default function Nodes({ data }: DatavizProps): JSX.Element {
       tempData.nodes.forEach((d : any) => {
         context.beginPath();
         context.arc(d.x, d.y, d.size, 0, 2 * Math.PI, true);
-        context.fillStyle = d.type === 'post' ? color.dark : color.primary;
+        context.fillStyle = d.type !== 'comment' ? color.dark : color.primary;
         context.strokeStyle = 'rgba(0, 0, 0, 1)';
         context.fill();
       });
