@@ -4,6 +4,7 @@
   position: relative;
   height: 100vh;
   width: 100%;
+  overflow: hidden;
   @include transition;
   svg {
     position: absolute;
@@ -29,6 +30,7 @@
   height: 100vh;
   max-height: 100%;
   width: 100vw;
+  overflow: hidden;
   canvas {
     max-width: 100%;
   }

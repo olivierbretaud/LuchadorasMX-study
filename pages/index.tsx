@@ -23,14 +23,11 @@ const Home: NextPage = () => {
       filtered.nodes = filtered.nodes.filter((n : any) => n.id === post
       || n.post === post
       || n?.posts?.find((p :string) => p === post));
-      filtered.links = filtered.links.filter((l : any) => {
-        const author = filtered.nodes.find((n : any) => n.id === l.target && post === l.source);
-        console.log(l, author);
-        if (author?.id === l.target || author?.id === l.source) {
-          return l;
-        }
-        return null;
-      });
+
+      filtered.links = filtered.links?.filter((l : any) => l?.post === post || l.source === post);
+    } else {
+      filtered.nodes = filtered.nodes.filter((n :any) => n.type !== 'comment');
+      filtered.links = filtered.links.filter((n :any) => n.type === 'post');
     }
 
     setFilteredData(filtered);

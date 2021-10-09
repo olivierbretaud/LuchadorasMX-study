@@ -12,6 +12,7 @@ import styles from './Nodes.module.scss';
 
 type DatavizProps = {
   data: any,
+  post: any,
 }
 
 export default function Nodes({ data }: DatavizProps): JSX.Element {
@@ -155,14 +156,14 @@ export default function Nodes({ data }: DatavizProps): JSX.Element {
         context.moveTo(d.source.x, d.source.y);
         context.lineTo(d.target.x, d.target.y);
         context.lineWidth = 1.5 / transform.k;
-        context.strokeStyle = hexToRgba(color.primary, 0.2);
+        context.strokeStyle = hexToRgba(d.color, 0.2);
         context.stroke();
       });
 
       tempData.nodes.forEach((d : any) => {
         context.beginPath();
         context.arc(d.x, d.y, d.size, 0, 2 * Math.PI, true);
-        context.fillStyle = d.type !== 'comment' ? color.dark : color.primary;
+        context.fillStyle = d.color;
         context.strokeStyle = 'rgba(0, 0, 0, 1)';
         context.fill();
       });
@@ -171,7 +172,7 @@ export default function Nodes({ data }: DatavizProps): JSX.Element {
         d3.select(`.${styles.graph}`).style('cursor', 'pointer');
         context.beginPath();
         context.arc(closeNode.x, closeNode.y, closeNode.size + 2, 0, 2 * Math.PI, true);
-        context.strokeStyle = hexToRgba(color.primary, 0.4);
+        context.strokeStyle = hexToRgba(closeNode.color, 0.4);
         context.lineWidth = 6;
         context.stroke();
       } else {
