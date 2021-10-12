@@ -20,11 +20,10 @@ const Home: NextPage = () => {
     if (!data.nodes) return;
     const filtered = { ...data };
     if (post) {
-      filtered.nodes = filtered.nodes.filter((n : any) => n.id === post
-      || n.post === post
+      filtered.nodes = filtered.nodes.filter((n : any) => n.post === post
       || n?.posts?.find((p :string) => p === post));
 
-      filtered.links = filtered.links?.filter((l : any) => l?.post === post || l.source === post);
+      filtered.links = filtered.links?.filter((l : any) => l?.post === post);
     } else {
       filtered.nodes = filtered.nodes.filter((n :any) => n.type !== 'comment');
       filtered.links = filtered.links.filter((n :any) => n.type === 'post');
