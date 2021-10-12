@@ -49,7 +49,7 @@ const Home: NextPage = () => {
             />
         }
       </main>
-      <Panel post={postData} />
+      <Panel post={postData} data={filteredDatas} />
 
     </div>
   );
