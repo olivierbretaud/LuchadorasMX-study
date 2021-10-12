@@ -15,17 +15,11 @@ type DatavizProps = {
   post: any,
 }
 
-export default function Nodes({ data }: DatavizProps): JSX.Element {
+export default function Nodes({ data, post }: DatavizProps): JSX.Element {
   const graphContainer = useRef(null);
   const router = useRouter();
   const [width, height] = useWindowSize();
   const [tooltipData, setTooltipData] = useState({ x: width / 2, y: height / 2 });
-
-  const color = {
-    dark: '#2d1569',
-    white: '#FFFFFF',
-    primary: '#5A2BD1',
-  };
 
   useEffect(() => {
     const currentGraph = graphContainer.current;
@@ -69,9 +63,18 @@ export default function Nodes({ data }: DatavizProps): JSX.Element {
       .force('center', d3.forceCenter((widthDpr / 2) / dpr, ((heightDpr / 2) / dpr) - 30))
       .force('x', d3.forceX(widthDpr / 2).strength(0.1))
       .force('y', d3.forceY(heightDpr / 2).strength(0.1))
-      .force('charge', d3.forceManyBody().strength(-55))
-      .force('link', d3.forceLink().id((d :any) => d.id).strength(0.8).distance(70))
-      .force('collision', d3.forceCollide().radius((d :any) => d.size * 1.6))
+      .force('charge', d3.forceManyBody().strength(post ? -290 : -100))
+      .force('link', d3.forceLink().id((d :any) => d.id).distance((link: any) => {
+        console.log(link);
+        if (link.source.type === 'post') return 50;
+        if (link.target.type === 'comment') return 2;
+        return 5;
+      }).strength(0.6))
+      .force('collision', d3.forceCollide().strength(0.1).radius((d :any) => {
+        if (!post) return d.size * 1.2;
+        if (post && d.type === 'post') return 50;
+        return d.size * 1.2;
+      }))
       .alphaTarget(0)
       .alphaDecay(0.05);
       // .force('center', d3.forceCenter((widthDpr / 2) / dpr, ((heightDpr / 2) / dpr)))
