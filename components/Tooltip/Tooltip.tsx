@@ -6,7 +6,9 @@ import styles from './tooltip.module.scss';
 export default function Tooltip({ data }: {
   data: any;
 }): JSX.Element {
-  console.log(styles[data.type]);
+  if (data.type === 'comment') {
+    console.log(data);
+  }
   return (
     <div
       className={`${styles.tooltip} ${data.type ? styles[data.type] : ''}`}
@@ -48,7 +50,7 @@ export default function Tooltip({ data }: {
         }
         {data.type === 'comment'
           && <div>
-            <p className={styles.name}>{data.author}</p>
+            <p className={styles.name} style={{ color: data.color || 'transparent' }}>{data.author.name}</p>
             {data?.comment && <p>{data.comment}</p>}
           </div>
         }
