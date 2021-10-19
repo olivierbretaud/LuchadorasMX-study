@@ -5,9 +5,9 @@ $bg-color: #fddcd7;
 $white: #FFFFFF;
 $radius : 3px;
 
-$post: '#2d1569';
-$comment: '#8567cf';
-$author: '#5A2BD1';
+$post: #2d1569;
+$comment: #8567cf;
+$author: #5A2BD1;
 
 @mixin transition {
   transition: all 0.2s ease-in-out;

@@ -17,7 +17,7 @@ export default function Tooltip({ data }: {
         top: data.y,
         opacity: data.size ? 1 : 0,
       }}>
-        <div className={styles.icon} style={{ backgroundColor: data.color || 'transparent' }}>
+        <div className={styles.icon}>
           {data.type === 'post' && <MdArticle />}
           {data.type === 'comment' && <MdComment />}
           {data.type === 'author' && <MdPerson />}
@@ -30,22 +30,25 @@ export default function Tooltip({ data }: {
         }
         {data.type === 'author'
           && <div>
-            <p className={styles.name} style={{ color: data.color || 'transparent' }}>{data.name}</p>
+            <p className={styles.name}>{data.name}</p>
             <p>
             {data?.gender && <span> Genre : {data.gender}<br/></span>}
             {data?.age && <span> Age : {data.age}<br/></span>}
             {data?.country && <span>Pays : {data.country}<br/></span>}
             {data?.region && <span>Region : {data.region}<br/></span>}
-            {/* {data?.ideologies.length > 0
-              && <div className={styles.list}>
-              {data.ideologies.map((y : string, i :number) => <p
-                className={styles.ideology}
-                key={data.name + y + i}>
-                {y}
-              </p>)}
-            </div>
-            } */}
             </p>
+
+            {data?.ideologies.length > 0
+              && <div className={styles.ideologies}>
+                <p>Idéologies</p>
+                <div className={styles.list}>
+                {data.ideologies.map((y : string, i :number) => <p
+                  key={data.name + y + i}>
+                  {y}
+                </p>)}
+              </div>
+            </div>
+            }
           </div>
         }
         {data.type === 'comment'

@@ -29,7 +29,6 @@
     top: -15px;
   }
   &.post {
-    border: 2px solid $post;
     .icon {
       background-color: $post;
     }
@@ -38,13 +37,17 @@
      }
   }
   &.comment {
-    border: 2px solid $comment;
+    .icon {
+      background-color: $comment;
+    }
     .code {
      color: $comment;
     }
   }
-  &.comment {
-    border: 2px solid $author;
+  &.author {
+    .icon {
+      background-color: $author;
+    }
     .code {
      color: $author;
     }
@@ -64,7 +67,22 @@
       color: $author;
     }
   }
-  .list {
-    display: flex;
+  .ideologies {
+    margin-bottom: 5px;
+    p {
+      margin: 2px;
+    }
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      p {
+        background-color: $author;
+        color: $white;
+        border-radius: 3px;
+        margin: 2px;
+        padding: 2px 4px;
+      }
+    }
   }
 }
