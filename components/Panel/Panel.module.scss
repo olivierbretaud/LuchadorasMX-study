@@ -9,13 +9,28 @@
   top: 20px;
   overflow-y: auto;
   transform: translateX(440px);
-  border-radius: 15px;
+  border-radius: 5px;
   background-color: $white;
   &.is-open {
     transform: translateX(0px);
   }
   .post {
-    margin: 10px; 
+    margin: 0px 10px;
+    width: calc(100% - 20px); 
     border-radius: 8px;
+  }
+  .comment-list {
+    padding: 10px;
+  }
+  .close {
+    position: relative;
+    a {
+      z-index: 200;
+      margin: 5px 10px;
+      display: flex;
+      align-items: center;
+      color: rgba($dark ,0.5);
+      font-size: 14px;
+    }
   }
 }
