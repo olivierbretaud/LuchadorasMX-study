@@ -27,6 +27,11 @@ $author: #5A2BD1;
 	box-shadow: 3px 3px 40px 15px rgba($primary-dark, .4);
 }
 
+@mixin name {
+  font-family: "Montserrat-SemiBold";
+  text-transform: uppercase;
+}
+
 @font-face {
 	font-family: "Montserrat-Bold";
 	src: url("../assets/fonts/Montserrat-Bold.ttf") format("truetype");

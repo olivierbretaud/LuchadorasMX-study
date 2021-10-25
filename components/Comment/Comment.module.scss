@@ -1,14 +1,9 @@
 @import '../../styles/variables.scss';
 
-@mixin name {
-  font-family: "Montserrat-SemiBold";
-  text-transform: uppercase;
-}
-
 .container {
   width: 100%;
   font-size: 14px;
-  padding: 10px 10px 5px 10Px;
+  padding: 10px 10px 5px 10px;
   border: 1px solid rgba($dark ,0.1);
   border-radius: $radius;
   margin-bottom: 10px;

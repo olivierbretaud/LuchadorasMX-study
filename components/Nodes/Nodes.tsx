@@ -184,6 +184,9 @@ export default function Nodes({ data, post }: DatavizProps): JSX.Element {
         if (closeNode?.type === 'post') {
           router.push(`/?post=${closeNode.id}`);
         }
+        if (!post && closeNode?.type === 'author') {
+          router.push(`/?author=${closeNode.id}`);
+        }
         simulationUpdate();
       })
       .on('mousemove', (event) => {

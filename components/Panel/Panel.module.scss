@@ -19,6 +19,38 @@
     width: calc(100% - 20px); 
     border-radius: 8px;
   }
+  .author {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid rgba($dark ,0.1);
+    border-radius: $radius;
+    font-size: 14px;;
+    .name {
+      @include name;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $primary-color;
+      margin: 0px;
+      line-height: 14px
+    }
+    span {
+      color: rgba($dark ,0.5);
+    }
+    .ideologies {
+      margin-top: 10px;
+    }
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      p {
+        background-color: rgba($dark ,0.1);
+      }
+    }
+    p {
+      line-height: 14px
+    }
+  }
   .comment-list {
     padding: 10px;
   }

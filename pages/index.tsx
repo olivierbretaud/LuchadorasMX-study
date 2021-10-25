@@ -11,10 +11,11 @@ import Panel from '../components/Panel/Panel';
 const Home: NextPage = () => {
   const [filteredDatas, setFilteredData] = useState();
   const router = useRouter();
-  const { post } = router.query;
+  const { post, author } = router.query;
 
   const data : any = dataSet;
   const postData = data.nodes?.find((n : any) => n.id === post);
+  const authorData = data.nodes?.find((n : any) => n.id === author);
 
   useEffect(() => {
     if (!data.nodes) return;
@@ -24,13 +25,22 @@ const Home: NextPage = () => {
       || n?.posts?.find((p :string) => p === post));
 
       filtered.links = filtered.links?.filter((l : any) => l?.post === post);
+    } else if (author) {
+      filtered.nodes = filtered.nodes.filter(
+        (n : any) => n?.author?.id === author || n.id === author,
+      );
+      filtered.links = filtered.links?.filter(
+        (l : any) => l?.target === author || l.source === author,
+      );
+      console.log(filtered.nodes);
+      filtered.links = [];
     } else {
       filtered.nodes = filtered.nodes.filter((n :any) => n.type !== 'comment');
       filtered.links = filtered.links.filter((n :any) => n.type === 'post');
     }
 
     setFilteredData(filtered);
-  }, [data, post]);
+  }, [data, post, author]);
 
   return (
     <div className={styles.container}>
@@ -48,7 +58,7 @@ const Home: NextPage = () => {
             />
         }
       </main>
-      <Panel post={postData} data={filteredDatas} />
+      <Panel post={postData} author={authorData} data={filteredDatas} />
 
     </div>
   );
