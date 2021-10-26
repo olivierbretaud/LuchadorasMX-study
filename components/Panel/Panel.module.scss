@@ -3,7 +3,7 @@
 .panel {
   @include transition;
   position: fixed;
-  height: calc(100vh - 40px);
+  max-height: calc(100vh - 40px);
   width: 400px;
   right: 20px;
   top: 20px;
@@ -24,27 +24,47 @@
     padding: 10px;
     border: 1px solid rgba($dark ,0.1);
     border-radius: $radius;
-    font-size: 14px;;
+    font-size: 14px;
     .name {
       @include name;
       font-weight: bold;
       text-transform: uppercase;
       color: $primary-color;
       margin: 0px;
-      line-height: 14px
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+      .icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 15px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: $author;
+      }
     }
     span {
       color: rgba($dark ,0.5);
     }
     .ideologies {
-      margin-top: 10px;
-    }
-    .list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
+      margin-bottom: 5px;
       p {
-        background-color: rgba($dark ,0.1);
+        margin: 2px;
+      }
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        p {
+          background-color: $author;
+          color: $white;
+          border-radius: 3px;
+          margin: 2px;
+          padding: 2px 4px;
+        }
       }
     }
     p {

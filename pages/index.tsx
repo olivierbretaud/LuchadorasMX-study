@@ -30,10 +30,8 @@ const Home: NextPage = () => {
         (n : any) => n?.author?.id === author || n.id === author,
       );
       filtered.links = filtered.links?.filter(
-        (l : any) => l?.target === author || l.source === author,
+        (l : any) => l.source === author,
       );
-      console.log(filtered.nodes);
-      filtered.links = [];
     } else {
       filtered.nodes = filtered.nodes.filter((n :any) => n.type !== 'comment');
       filtered.links = filtered.links.filter((n :any) => n.type === 'post');

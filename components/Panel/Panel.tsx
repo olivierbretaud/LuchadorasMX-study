@@ -3,6 +3,7 @@ import React from 'react';
 import { IoClose } from 'react-icons/io5';
 import Link from 'next/link';
 import { FacebookProvider, EmbeddedPost, Comments } from 'react-facebook';
+import { MdPerson } from 'react-icons/md';
 import styles from './Panel.module.scss';
 import Comment from '../Comment/Comment';
 
@@ -25,9 +26,12 @@ export default function Panel({ post, data, author }: {
       {author?.id
         && <>
           <div className={styles.author}>
-           <p className={styles.name}>
+           <div className={styles.name}>
+             <div className={styles.icon}>
+              <MdPerson />
+             </div>
             {author.name}
-          </p>
+          </div>
           <p>
           {author?.gender && <span> Genre : {author.gender}<br/></span>}
           {author?.age && <span> Age : {author.age}<br/></span>}

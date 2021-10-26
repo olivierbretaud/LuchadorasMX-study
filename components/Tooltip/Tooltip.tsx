@@ -6,9 +6,6 @@ import styles from './tooltip.module.scss';
 export default function Tooltip({ data }: {
   data: any;
 }): JSX.Element {
-  if (data.type === 'comment') {
-    console.log(data);
-  }
   return (
     <div
       className={`${styles.tooltip} ${data.type ? styles[data.type] : ''}`}

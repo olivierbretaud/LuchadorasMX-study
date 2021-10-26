@@ -4,7 +4,6 @@ import { IoChevronDownSharp } from 'react-icons/io5';
 import styles from './Comment.module.scss';
 
 const Comment = ({ comment } : { comment: any }): JSX.Element => {
-  console.log(comment);
   const [detailIsOpen, setDetailIsOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement | null>(null);
   return (
