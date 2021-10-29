@@ -32,7 +32,7 @@ const Comment = ({ comment } : { comment: any }): JSX.Element => {
       style={{
         height: detailIsOpen && contentRef.current ? contentRef.current?.clientHeight : 0,
       }}>
-        <div className={styles.content} ref={contentRef}>
+        {/* <div className={styles.content} ref={contentRef}>
           <p className={styles.name}>
             {comment.author.name}
           </p>
@@ -54,7 +54,7 @@ const Comment = ({ comment } : { comment: any }): JSX.Element => {
             </div>
           </div>
           }
-        </div>
+        </div> */}
     </div>
   </div>
   );

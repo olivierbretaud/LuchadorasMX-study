@@ -39,6 +39,9 @@
     .content {
       border-top: 1px solid rgba($dark ,0.1);
       padding: 10px 0px;
+      margin: 0px 10px;
+      width: calc(100% - 20px); 
+      border-radius: 8px;
       .name {
         @include name;
         font-weight: bold;
