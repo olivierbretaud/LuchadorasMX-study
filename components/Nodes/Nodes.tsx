@@ -182,10 +182,22 @@ export default function Nodes({ data, post }: DatavizProps): JSX.Element {
         event.stopPropagation();
         closeNode = foundNode(event) ? foundNode(event) : null;
         if (closeNode?.type === 'post') {
-          router.push(`/?post=${closeNode.id}`);
+          router.push({
+            pathname: '/',
+            query: {
+              ...router.query,
+              post: closeNode.id,
+            },
+          });
         }
         if (!post && closeNode?.type === 'author') {
-          router.push(`/?author=${closeNode.id}`);
+          router.push({
+            pathname: '/',
+            query: {
+              ...router.query,
+              author: closeNode.id,
+            },
+          });
         }
         simulationUpdate();
       })

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { IoClose } from 'react-icons/io5';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { FacebookProvider, EmbeddedPost } from 'react-facebook';
 import { MdPerson } from 'react-icons/md';
 import styles from './Panel.module.scss';
@@ -12,16 +12,28 @@ export default function Panel({ post, data, author }: {
   data: any;
   author: any;
 }): JSX.Element {
-  console.log(data);
+  const router = useRouter();
+
+  function back() {
+    router.push({
+      pathname: '/',
+      query: {
+        ...router.query,
+        author: null,
+        post: null,
+      },
+    });
+  }
+
   return (
     <div className={`${styles.panel} ${post || author ? styles['is-open'] : ''}`}>
 
       <div className={styles.close} >
-        <Link href="/">
-          <a >
+        <button
+          onClick={() => back()}
+          >
             FERMER <IoClose size={22}/>
-          </a>
-        </Link>
+        </button>
       </div>
       {author?.id
         && <>
@@ -59,7 +71,7 @@ export default function Panel({ post, data, author }: {
       {post?.id
        && <>
           <div className={styles.post}>
-          <FacebookProvider appId="406497424294475">
+          <FacebookProvider appId="965826244000856">
             <EmbeddedPost href={`https://www.facebook.com/140301286056129/posts/${post?.id}`} width="380" />
           </FacebookProvider>
         </div>

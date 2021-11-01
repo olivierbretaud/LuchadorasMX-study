@@ -1,0 +1,58 @@
+@import '../../styles/variables.scss';
+
+.container {
+  @include transition;
+  position: fixed;
+  height: 38px;
+  width: 92;
+  left: 20px;
+  top: 20px;
+  z-index: 200;
+  overflow-y: auto;
+  border-radius: 5px;
+  background-color: $primary-color;
+  &.is-open {
+    transform: translateX(0px);
+    width: 300px;
+    height: calc(100vh - 40px);
+  }
+  .toggle {
+    @include btn;
+    color: $white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    svg {
+      margin-right: 10px;
+    }
+  }
+  .filters {
+    padding: 20px;
+    h4 {
+      margin: 0px;
+      color: $white;
+    }
+    .list {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      button {
+        @include btn;
+        background-color: rgba($post, 0.8);
+        color: $primary-color;
+        border-radius: 3px;
+        margin: 2px;
+        padding: 3px 5px;
+        &:hover {
+          background-color: rgba($white, 0.6);
+          color: $primary-color;
+        }
+        &.is-active {
+          background-color: $white;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}

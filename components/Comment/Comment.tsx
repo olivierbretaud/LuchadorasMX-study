@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useRef } from 'react';
 import { IoChevronDownSharp } from 'react-icons/io5';
+import { FacebookProvider, EmbeddedPost } from 'react-facebook';
 import styles from './Comment.module.scss';
 
 const Comment = ({ comment } : { comment: any }): JSX.Element => {
@@ -32,6 +33,11 @@ const Comment = ({ comment } : { comment: any }): JSX.Element => {
       style={{
         height: detailIsOpen && contentRef.current ? contentRef.current?.clientHeight : 0,
       }}>
+        <div className={styles.content} ref={contentRef}>
+          <FacebookProvider appId="965826244000856">
+            <EmbeddedPost href={`https://www.facebook.com/140301286056129/posts/${comment?.post}`} width="380" />
+          </FacebookProvider>
+        </div>
         {/* <div className={styles.content} ref={contentRef}>
           <p className={styles.name}>
             {comment.author.name}

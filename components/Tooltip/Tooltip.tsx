@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { MdArticle, MdPerson, MdComment } from 'react-icons/md';
+// import Image from 'next/image';
 import styles from './tooltip.module.scss';
 
 export default function Tooltip({ data }: {
@@ -52,6 +53,8 @@ export default function Tooltip({ data }: {
           && <div>
             <p className={styles.name} style={{ color: data.color || 'transparent' }}>{data.author.name}</p>
             {data?.comment && <p>{data.comment}</p>}
+            {/* {data?.image && <Image src={data.image} alt="emoticone" layout='fill' />}
+            {data?.image && console.log(data?.image)} */}
           </div>
         }
     </div>

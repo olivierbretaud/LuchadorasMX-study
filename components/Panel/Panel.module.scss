@@ -76,7 +76,8 @@
   }
   .close {
     position: relative;
-    a {
+    button {
+      @include btn;
       z-index: 200;
       margin: 5px 10px;
       display: flex;
