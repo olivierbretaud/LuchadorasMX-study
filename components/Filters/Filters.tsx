@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import { HiFilter } from 'react-icons/hi';
 import dataSet from '../../constants/data.json';
@@ -11,7 +12,7 @@ const Filters = (
   :
   {
     handleChangeQuery: (key: string, value: string) => void,
-    query: any,
+    query: any | unknown,
   },
 ): JSX.Element => {
   const [filterIsOpen, setFilterIsOpen] = useState(false);
