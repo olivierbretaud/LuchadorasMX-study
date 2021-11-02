@@ -68,10 +68,11 @@ export default function Panel({ post, data, author }: {
         </div>
         </>
       }
+      {console.log(process.env.NEXT_PUBLIC_APP_ID)}
       {post?.id
        && <>
           <div className={styles.post}>
-          <FacebookProvider appId="965826244000856">
+          <FacebookProvider appId={process.env.NEXT_PUBLIC_APP_ID}>
             <EmbeddedPost href={`https://www.facebook.com/140301286056129/posts/${post?.id}`} width="380" />
           </FacebookProvider>
         </div>

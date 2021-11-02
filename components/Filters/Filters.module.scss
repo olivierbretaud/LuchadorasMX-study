@@ -9,6 +9,7 @@
   top: 20px;
   z-index: 200;
   overflow-y: auto;
+  @include scrollbar;
   border-radius: 5px;
   background-color: $primary-color;
   &.is-open {
@@ -39,7 +40,7 @@
       justify-content: flex-start;
       button {
         @include btn;
-        background-color: rgba($post, 0.8);
+        background-color: rgba($post, 1);
         color: $primary-color;
         border-radius: 3px;
         margin: 2px;

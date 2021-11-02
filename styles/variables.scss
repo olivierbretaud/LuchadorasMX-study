@@ -51,3 +51,19 @@ $author: #5A2BD1;
 	font-family: "Roboto-Regular";
 	src: url("../assets/fonts/Roboto-Regular.ttf") format("truetype");
 }
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba($dark, 0.5);
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: $dark;
+  }
+}
