@@ -41,8 +41,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     if (!data.nodes) return;
     const filtered = { ...data };
-    const selectedIdeologies : string[] = ideologies?.split(',').filter((l :string) => l !== '');
-    console.log(selectedIdeologies);
+    const selectedIdeologies : string[] | null = ideologies?.split(',').filter((l :string) => l !== '');
     if (selectedIdeologies?.length) {
       const authors = filtered.nodes.filter((a : any) => {
         if (a.type === 'author' && a.ideologies?.find((d :string) => selectedIdeologies?.find((s) => s === d))) {

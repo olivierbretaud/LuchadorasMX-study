@@ -68,7 +68,6 @@ export default function Panel({ post, data, author }: {
         </div>
         </>
       }
-      {console.log(process.env.NEXT_PUBLIC_APP_ID)}
       {post?.id
        && <>
           <div className={styles.post}>
