@@ -30,7 +30,7 @@ export default function Nodes({ data, post }: DatavizProps): JSX.Element {
   },[]);
 
   useEffect(() => {
-    if (data) {
+    if (data.nodes) {
       const dataset = cloneDeep(data);
       initGraph(dataset);
     }
@@ -56,16 +56,16 @@ export default function Nodes({ data, post }: DatavizProps): JSX.Element {
 
     context?.scale(dpr, dpr);
 
-    const simulation = d3.forceSimulation<
+    const simulation : any = d3.forceSimulation<
       SimulationNodeDatum,
       SimulationLinkDatum<SimulationNodeDatum>
       >()
       .force('center', d3.forceCenter((widthDpr / 2) / dpr, (heightDpr / 2) / dpr))
       .force('x', d3.forceX(widthDpr / 2).strength(0.1))
       .force('y', d3.forceY(heightDpr / 2).strength(0.1))
-      .force('charge', d3.forceManyBody().strength(-90))
+      .force('charge', d3.forceManyBody().strength(-120))
       .force('link', d3.forceLink().id((d :any) => d.id))
-      .force('collision', d3.forceCollide().strength(0.1).radius((d :any) => d.size * 2))
+      .force('collision', d3.forceCollide().strength(0.1).radius((d :any) => d.size * 1.4))
       .alphaTarget(0)
       .alphaDecay(0.05);
       // .force('center', d3.forceCenter((widthDpr / 2) / dpr, ((heightDpr / 2) / dpr)))
@@ -85,12 +85,12 @@ export default function Nodes({ data, post }: DatavizProps): JSX.Element {
     }
 
     d3.select(graphCanvas)
-      .call(d3.drag()
+      .call(d3.drag<any, any, any>()
         .subject(dragsubject)
         .on('start', dragstarted)
         .on('drag', dragged)
         .on('end', dragended))
-      .call(d3.zoom().scaleExtent([1 / 10, 8]).on('zoom', zoomed));
+      .call(d3.zoom<any, any>().scaleExtent([1 / 10, 8]).on('zoom', zoomed));
 
     function dragsubject(event : any) : any {
       let i;
@@ -134,7 +134,7 @@ export default function Nodes({ data, post }: DatavizProps): JSX.Element {
     simulation.nodes(tempData.nodes)
       .on('tick', () => window.requestAnimationFrame(simulationUpdate));
 
-    simulation.force('link').links(tempData.links).strength(1);
+    simulation.force('link').links(tempData.links).strength(2);
 
     let closeNode : SimulationNodeDatum | null | undefined | any;
 
@@ -149,8 +149,8 @@ export default function Nodes({ data, post }: DatavizProps): JSX.Element {
         context.beginPath();
         context.moveTo(d.source.x, d.source.y);
         context.lineTo(d.target.x, d.target.y);
-        context.lineWidth = 1.5 / transform.k;
-        context.strokeStyle = hexToRgba(d.color, 0.2);
+        context.lineWidth = 1.2;
+        context.strokeStyle = '#a492d1';
         context.stroke();
       });
 

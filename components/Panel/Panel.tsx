@@ -13,6 +13,7 @@ export default function Panel({ post, data, author }: {
   author: any;
 }): JSX.Element {
   const router = useRouter();
+  const { name } = router.query;
 
   function back() {
     router.push({
@@ -32,7 +33,7 @@ export default function Panel({ post, data, author }: {
         <button
           onClick={() => back()}
           >
-            FERMER <IoClose size={22}/>
+            CERCA <IoClose size={22}/>
         </button>
       </div>
       {author?.id
@@ -42,18 +43,18 @@ export default function Panel({ post, data, author }: {
              <div className={styles.icon}>
               <MdPerson />
              </div>
-            {author.name}
+            {name === 'true' ? author.name : author.code }
           </div>
           <p>
-          {author?.gender && <span> Genre : {author.gender}<br/></span>}
-          {author?.age && <span> Age : {author.age}<br/></span>}
-          {author?.country && <span>Pays : {author.country}<br/></span>}
-          {author?.region && <span>Region : {author.region}<br/></span>}
+          {author?.gender && <span> Género : {author.gender}<br/></span>}
+          {author?.age && <span> Edad: {author.age}<br/></span>}
+          {author?.country && <span>País : {author.country}<br/></span>}
+          {author?.region && <span>Región : {author.region}<br/></span>}
           </p>
 
           {author?.ideologies.length > 0
             && <div className={styles.ideologies}>
-              <p>Idéologies</p>
+              <p>Ideologias</p>
               <div className={styles.list}>
               {author.ideologies.map((y : string, i :number) => <p
                 key={author.name + y + i}>

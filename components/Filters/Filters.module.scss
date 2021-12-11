@@ -28,19 +28,20 @@
     }
   }
   .filters {
-    padding: 20px;
+    padding: 0px 20px;
     h4 {
-      margin: 0px;
+      margin: 10px 0px;
       color: $white;
     }
     .list {
       margin-top: 10px;
+      margin-bottom: 30px;
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-start;
       button {
         @include btn;
-        background-color: rgba($post, 1);
+        background-color: rgba($white, 0.4);
         color: $primary-color;
         border-radius: 3px;
         margin: 2px;
