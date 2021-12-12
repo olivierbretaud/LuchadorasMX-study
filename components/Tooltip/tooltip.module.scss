@@ -52,6 +52,9 @@
      color: $author;
     }
   }
+  .label {
+    color: rgba($dark, 0.5)
+  }
   p {
     text-align: center;
     max-width: 100%;

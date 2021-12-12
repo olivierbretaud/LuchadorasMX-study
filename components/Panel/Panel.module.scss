@@ -12,6 +12,10 @@
   border-radius: 5px;
   background-color: $white;
   @include scrollbar;
+  display: none;
+  @media only screen and (min-width: $md-screen) {
+    display: block;
+  }
   &.is-open {
     transform: translateX(0px);
   }
@@ -19,11 +23,31 @@
     margin: 0px 10px 10px 10px;
     width: calc(100% - 20px); 
     border-radius: 8px;
+    .name {
+      @include name;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $post;
+      margin: 0px 8px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+      .icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 15px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: $post;
+      }
+    }
   }
   .author {
     margin: 10px;
-    padding: 10px;
-    border: 1px solid rgba($dark ,0.1);
+    padding: 8px;
     border-radius: $radius;
     font-size: 14px;
     .name {
@@ -47,8 +71,8 @@
         background-color: $author;
       }
     }
-    span {
-      color: rgba($dark ,0.5);
+    .label {
+      color: rgba($dark, 0.5)
     }
     .ideologies {
       margin-bottom: 5px;

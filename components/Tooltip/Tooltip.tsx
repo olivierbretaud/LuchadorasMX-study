@@ -33,15 +33,34 @@ export default function Tooltip({ data }: {
           && <div>
                 <p className={styles.name}>{name === 'true' ? data.name : data.code }</p>
             <p>
-            {data?.gender && <span> Género : {data.gender}<br/></span>}
-            {data?.age && <span> Edad : {data.age}<br/></span>}
-            {data?.country && <span>País : {data.country}<br/></span>}
-            {data?.region && <span>Región : {data.region}<br/></span>}
+              {data?.banner !== 'S/I' && <span className={styles.label}>Bandera : {data.banner}<br/><br/></span>}
+              {data?.gender && <span>
+                  <span className={styles.label}>Género :</span> {data.gender}<br/>
+                </span>
+              }
+              {data?.age && <span>
+                  <span className={styles.label}>Edad :</span> {data.age}<br/>
+                </span>
+              }
+              {data?.country && <span>
+                  <span className={styles.label}>País :</span> {data.country}<br/>
+                </span>
+              }
+              {data?.region && <span>
+                  <span className={styles.label}>Región :</span> {data.region}<br/>
+                </span>
+              }
+              {data?.study !== 'S/I' && <span>
+                <span className={styles.label}>Estudios :</span> {data.study}<br/>
+              </span>}
+              {data?.job !== 'S/I' && <span>
+                <span className={styles.label}>Profession :</span> {data.job}<br/>
+              </span>}
             </p>
 
             {data?.ideologies.length > 0
               && <div className={styles.ideologies}>
-                <p>Ideologias</p>
+                <p className={styles.label}>Ideologias</p>
                 <div className={styles.list}>
                 {data.ideologies.map((y : string, i :number) => <p
                   key={data.name + y + i}>

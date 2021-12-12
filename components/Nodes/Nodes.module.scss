@@ -34,4 +34,24 @@
   canvas {
     max-width: 100%;
   }
+  .no-data {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    color: $primary-color;
+    p {
+      @include transition;
+      transform: translateY(40px);
+      opacity: 0;
+      &.active {
+        transform: translateY(0px);
+        opacity: 1;
+      }
+    }
+  }
 }

@@ -9,10 +9,23 @@
   align-items: center;
   height: 100vh;
   background-color: $bg-color;
-  main {
+  .main {
     @include transition;
     width: 100%;
     position: relative;
+    display: none;
+    @media only screen and (min-width: $md-screen) {
+      display: block;
+    }
+  }
+  .mobile {
+    position: absolute;
+    color: $primary-color;
+    text-align: center;
+    display: flex;
+    @media only screen and (min-width: $md-screen) {
+      display: none;
+    }
   }
 }
 

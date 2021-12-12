@@ -9,6 +9,11 @@ $post: #2d1569;
 $comment: #8567cf;
 $author: #5A2BD1;
 
+$lg-screen: 1200px;
+$md-screen: 1024px;
+$sm-screen: 768px;
+$xs-screen: 576px;
+
 @mixin transition {
   transition: all 0.2s ease-in-out;
 }

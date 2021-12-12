@@ -1,0 +1,64 @@
+@import '../../styles/variables.scss';
+
+.container {
+  width: 100%;
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid rgba($dark ,0.1);
+  border-radius: $radius;
+  margin: 10px 0px;
+  .head {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .category {
+      @include name;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $post;
+      margin: 0px;
+      line-height: 18px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .icon {
+        width: 28px;
+        min-width: 28px;
+        height: 28px;
+        border-radius: 15px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: $post;
+      }
+    }
+    button {
+      @include btn;
+    }
+  }
+  p {
+    margin: 0px;
+    word-break: break-all;
+  }
+  .panel {
+    @include transition;
+    overflow: hidden;
+    .content {
+      width: 100%; 
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+  }
+  .comment {
+    border-top: 1px solid rgba($dark ,0.2);
+    font-size: 14px;
+    margin: 10px 0px ;
+    padding-top: 8px;
+    .date {
+      color: rgba($dark ,0.5);
+      margin-bottom: 8px;
+    }
+  }
+}

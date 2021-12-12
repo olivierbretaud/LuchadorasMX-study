@@ -15,7 +15,7 @@ type DatavizProps = {
   post: any,
 }
 
-export default function Nodes({ data, post }: DatavizProps): JSX.Element {
+export default function Nodes({ data }: DatavizProps): JSX.Element {
   const graphContainer = useRef(null);
   const router = useRouter();
   const [width, height] = useWindowSize();
@@ -187,14 +187,16 @@ export default function Nodes({ data, post }: DatavizProps): JSX.Element {
             query: {
               ...router.query,
               post: closeNode.id,
+              author: '',
             },
           });
         }
-        if (!post && closeNode?.type === 'author') {
+        if (closeNode?.type === 'author') {
           router.push({
             pathname: '/',
             query: {
               ...router.query,
+              post: '',
               author: closeNode.id,
             },
           });
@@ -223,6 +225,9 @@ export default function Nodes({ data, post }: DatavizProps): JSX.Element {
   return (
     <div ref={graphContainer} className={styles.graph}>
       <Tooltip data={tooltipData} />
+      <div className={styles['no-data']}>
+        <p className={`${styles['no-data']} ${!data?.nodes?.length ? styles.active : ''}`}>No se han encontrado datos</p>
+      </div>
     </div>
   );
 }
