@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import { MdArticle } from 'react-icons/md';
 import { format } from 'date-fns';
 import { IoChevronDownSharp } from 'react-icons/io5';
-import { FacebookProvider, EmbeddedPost } from 'react-facebook';
+import { EmbeddedPost } from 'react-facebook';
 import styles from './Post.module.scss';
 
 const Post = ({ comments, post } : { comments: any, post: any }): JSX.Element => {
@@ -35,9 +35,7 @@ const Post = ({ comments, post } : { comments: any, post: any }): JSX.Element =>
         height: detailIsOpen && contentRef.current ? contentRef.current?.clientHeight : 0,
       }}>
       <div className={styles.content} ref={contentRef}>
-        <FacebookProvider appId="965826244000856">
-          <EmbeddedPost href={`https://www.facebook.com/140301286056129/posts/${post._id}`} width="380" />
-        </FacebookProvider>
+        <EmbeddedPost href={`https://www.facebook.com/140301286056129/posts/${post._id}`} width="380" />
       </div>
     </div>
     {commentsList?.map((c: any) => <div

@@ -82,13 +82,15 @@ export default function Panel({ post, data, author }: {
           </div>
           }
         </div>
-        <div className={styles['comment-list']}>
-          {data.nodes?.filter((d: any) => d.type === 'post').map((p : any) => <Post
-            key={p.id}
-            comments={data.nodes?.filter((c: any) => c.type === 'comment' && c.post === p.id)}
-            post={p}
-          />)}
-        </div>
+        <FacebookProvider appId={process.env.NEXT_PUBLIC_APP_ID}>
+          <div className={styles['comment-list']}>
+            {data.nodes?.filter((d: any) => d.type === 'post').map((p : any) => <Post
+              key={p.id}
+              comments={data.nodes?.filter((c: any) => c.type === 'comment' && c.post === p.id)}
+              post={p}
+            />)}
+          </div>
+        </FacebookProvider>
         </>
       }
       {post?.id
@@ -100,9 +102,11 @@ export default function Panel({ post, data, author }: {
               </div>
               {post.category}
             </div>
-          <FacebookProvider appId={process.env.NEXT_PUBLIC_APP_ID}>
-            <EmbeddedPost href={`https://www.facebook.com/140301286056129/posts/${post?.id}`} width="380" />
-          </FacebookProvider>
+          <div className={styles.iframe}>
+            <FacebookProvider appId={process.env.NEXT_PUBLIC_APP_ID}>
+              <EmbeddedPost href={`https://www.facebook.com/140301286056129/posts/${post?.id}`} width="380" />
+            </FacebookProvider>
+          </div>
         </div>
         {/* <div className={styles['comment-list']}>
           {data.nodes?.filter((d: any) => d.type === 'comment')
