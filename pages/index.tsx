@@ -8,6 +8,7 @@ import dataSet from '../constants/data.json';
 import styles from '../styles/Home.module.scss';
 import Panel from '../components/Panel/Panel';
 import Filters from '../components/Filters/Filters';
+import Stats from '../components/Stats/Stats';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -155,6 +156,8 @@ const Home: NextPage = () => {
                 />
             }
           </main>
+          {/* <Stats data={filteredDatas} /> */}
+
           <Panel post={postData} author={authorData} data={filteredDatas} />
       <div className={styles.mobile}>
         <p>la aplicación no está<br/>disponible en el móvil</p>

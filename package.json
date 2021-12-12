@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nivo/pie": "^0.74.0",
     "@react-hook/window-size": "^3.0.7",
     "@types/d3": "^7.0.0",
     "@types/d3-drag": "^3.0.1",
