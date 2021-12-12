@@ -35,9 +35,9 @@ const Post = ({ comments, post } : { comments: any, post: any }): JSX.Element =>
         height: detailIsOpen && contentRef.current ? contentRef.current?.clientHeight : 0,
       }}>
       <div className={styles.content} ref={contentRef}>
-      <FacebookProvider appId={process.env.NEXT_PUBLIC_APP_ID}>
-        <EmbeddedPost href={`https://www.facebook.com/140301286056129/posts/${post._id}`} width="380" />
-      </FacebookProvider>
+        <FacebookProvider appId={process.env.NEXT_PUBLIC_APP_ID}>
+          <EmbeddedPost href={`https://www.facebook.com/140301286056129/posts/${post?.id}`} width="380" />
+        </FacebookProvider>
       </div>
     </div>
     {commentsList?.map((c: any) => <div

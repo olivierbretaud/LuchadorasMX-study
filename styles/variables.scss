@@ -58,6 +58,8 @@ $xs-screen: 576px;
 }
 
 @mixin scrollbar {
+  scrollbar-color: $dark transparent !important;
+  scrollbar-width: thin !important;
   &::-webkit-scrollbar {
     width: 10px;
   }

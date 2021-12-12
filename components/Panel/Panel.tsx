@@ -106,10 +106,6 @@ export default function Panel({ post, data, author }: {
             </FacebookProvider>
           </div>
         </div>
-        {/* <div className={styles['comment-list']}>
-          {data.nodes?.filter((d: any) => d.type === 'comment')
-            .map((c : any) => <Comment key={c.id} comment={c} />)}
-        </div> */}
         </>
       }
     </div>
