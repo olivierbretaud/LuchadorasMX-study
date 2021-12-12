@@ -82,7 +82,6 @@ export default function Panel({ post, data, author }: {
           </div>
           }
         </div>
-        <FacebookProvider appId={process.env.NEXT_PUBLIC_APP_ID}>
           <div className={styles['comment-list']}>
             {data.nodes?.filter((d: any) => d.type === 'post').map((p : any) => <Post
               key={p.id}
@@ -90,7 +89,6 @@ export default function Panel({ post, data, author }: {
               post={p}
             />)}
           </div>
-        </FacebookProvider>
         </>
       }
       {post?.id
