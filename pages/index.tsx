@@ -156,7 +156,7 @@ const Home: NextPage = () => {
                 />
             }
           </main>
-          <Stats data={filteredDatas} />
+          {/* <Stats data={filteredDatas} /> */}
 
           <Panel post={postData} author={authorData} data={filteredDatas} />
       <div className={styles.mobile}>
