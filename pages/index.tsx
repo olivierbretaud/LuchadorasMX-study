@@ -132,7 +132,6 @@ const Home: NextPage = () => {
       filtered.nodes = filtered.nodes.filter((n :any) => n.type !== 'comment');
       filtered.links = filtered.links.filter((n :any) => n.type === 'author');
     }
-
     setFilteredData(filtered);
   }, [data, post, author, ideologies, ages, countries, genders]);
 
