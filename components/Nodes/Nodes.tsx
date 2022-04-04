@@ -70,7 +70,7 @@ export default function Nodes({ data }: DatavizProps): JSX.Element {
       .force('center', d3.forceCenter((widthDpr / 2) / dpr, (heightDpr / 2) / dpr))
       .force('x', d3.forceX(widthDpr / 2).strength(0.2))
       .force('y', d3.forceY(heightDpr / 2).strength(0.2))
-      .force('charge', d3.forceManyBody().strength(-140))
+      .force('charge', d3.forceManyBody().strength(-150))
       .force('link', d3.forceLink().id((d :any) => d.id).distance(40).strength(2))
       .force('collision', d3.forceCollide().strength(1).radius((d :any) => d.size * 1.4))
       .alphaTarget(0)
@@ -138,8 +138,8 @@ export default function Nodes({ data }: DatavizProps): JSX.Element {
 
     function simulationUpdate() {
       if (!context) return;
-      context.save();
       context.clearRect(0, 0, widthDpr, heightDpr);
+      context.save();
       context.translate(transform.x, transform.y);
       context.scale(transform.k, transform.k);
 
