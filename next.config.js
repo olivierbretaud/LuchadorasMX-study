@@ -5,6 +5,7 @@ module.exports = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  assetPrefix: './',
   images: {
     domains: ['scontent-ort2-1.xx.fbcdn.net'],
   },

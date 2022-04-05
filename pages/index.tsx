@@ -8,7 +8,7 @@ import dataSet from '../constants/data.json';
 import styles from '../styles/Home.module.scss';
 import Panel from '../components/Panel/Panel';
 import Filters from '../components/Filters/Filters';
-import Stats from '../components/Stats/Stats';
+import Stats from '../components/Pie/Pie';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -52,6 +52,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     if (!data.nodes) return;
     const filtered = { ...data };
+    let authors : any[] = [];
 
     const selectedIdeologies : string[] = ideologies?.toString().split(',').filter((l :string) => l !== '') || [];
     const selectedAges : string[] | null = ages?.toString().split(',').filter((l :string) => l !== '') || [];
@@ -61,7 +62,7 @@ const Home: NextPage = () => {
       || selectedAges?.length
       || selectedGenders?.length
       || selectedCountries?.length) {
-      let authors = [...filtered.nodes.filter((a:any) => a.type === 'author')];
+      authors = [...filtered.nodes.filter((a:any) => a.type === 'author')];
 
       if (selectedIdeologies?.length) {
         authors = authors.filter((a : any) => {
@@ -132,7 +133,15 @@ const Home: NextPage = () => {
       filtered.nodes = filtered.nodes.filter((n :any) => n.type !== 'comment');
       filtered.links = filtered.links.filter((n :any) => n.type === 'author');
     }
-
+    if (filtered.nodes.length > 3300) {
+      filtered.nodes = filtered.nodes.filter((n :any) => n.type !== 'comment');
+      filtered.links = data.links.filter((n :any) => n.type === 'author').filter((l :any) => {
+        if (authors.find((n :any) => n.id === l.target || n.id === l?.author)) {
+          return l;
+        }
+        return null;
+      });
+    }
     setFilteredData(filtered);
   }, [data, post, author, ideologies, ages, countries, genders]);
 
@@ -146,6 +155,7 @@ const Home: NextPage = () => {
           <Filters
             handleChangeQuery={handleChangeQuery}
             query={router.query}
+            filteredData={filteredDatas}
             />
 
           <main className={`${styles.main} ${postData ? styles['panel-is-active'] : ''}`}>
@@ -156,8 +166,6 @@ const Home: NextPage = () => {
                 />
             }
           </main>
-          {/* <Stats data={filteredDatas} /> */}
-
           <Panel post={postData} author={authorData} data={filteredDatas} />
       <div className={styles.mobile}>
         <p>la aplicación no está<br/>disponible en el móvil</p>

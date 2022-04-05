@@ -60,22 +60,21 @@ export default function Nodes({ data }: DatavizProps): JSX.Element {
       SimulationNodeDatum,
       SimulationLinkDatum<SimulationNodeDatum>
       >()
+      // .force('charge', d3.forceManyBody())
+      // .force('link', d3.forceLink().id((d :any) => d.id))
+      // .force('center', d3.forceCenter((widthDpr / 2) / dpr, (heightDpr / 2) / dpr))
+      // .force('x', d3.forceX())
+      // .force('y', d3.forceY())
+      // .force('collision', d3.forceCollide(10))
+      // .alphaTarget(0);
       .force('center', d3.forceCenter((widthDpr / 2) / dpr, (heightDpr / 2) / dpr))
       .force('x', d3.forceX(widthDpr / 2).strength(0.1))
       .force('y', d3.forceY(heightDpr / 2).strength(0.1))
-      .force('charge', d3.forceManyBody().strength(-120))
-      .force('link', d3.forceLink().id((d :any) => d.id))
-      .force('collision', d3.forceCollide().strength(0.1).radius((d :any) => d.size * 1.4))
+      .force('charge', d3.forceManyBody().strength(-130))
+      .force('link', d3.forceLink().id((d :any) => d.id).strength(1))
+      .force('collision', d3.forceCollide().strength(1).radius((d :any) => d.size * 1.4))
       .alphaTarget(0)
       .alphaDecay(0.05);
-      // .force('center', d3.forceCenter((widthDpr / 2) / dpr, ((heightDpr / 2) / dpr)))
-      // .force('x', d3.forceX((widthDpr / 2) / dpr).strength(0.4))
-      // .force('y', d3.forceY((heightDpr / 2) / dpr).strength(0.4))
-      // .force('charge', d3.forceManyBody().strength(-55))
-      // .force('link', d3.forceLink().id((d : any) => d.id))
-      // .force('collision', d3.forceCollide(12).strength(1).radius((d :any) => d.size * 1.4))
-      // .alphaTarget(0)
-      // .alphaDecay(0.05);
 
     let transform = d3.zoomIdentity;
 
@@ -132,16 +131,15 @@ export default function Nodes({ data }: DatavizProps): JSX.Element {
     }
 
     simulation.nodes(tempData.nodes)
-      .on('tick', () => window.requestAnimationFrame(simulationUpdate));
-
-    simulation.force('link').links(tempData.links).strength(2);
+      .on('tick', simulationUpdate);
+    simulation.force('link').links(tempData.links);
 
     let closeNode : SimulationNodeDatum | null | undefined | any;
 
     function simulationUpdate() {
       if (!context) return;
-      context.save();
       context.clearRect(0, 0, widthDpr, heightDpr);
+      context.save();
       context.translate(transform.x, transform.y);
       context.scale(transform.k, transform.k);
 
