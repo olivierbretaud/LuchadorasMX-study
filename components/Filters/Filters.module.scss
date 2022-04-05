@@ -28,12 +28,21 @@
     display: flex;
     align-items: center;
     text-transform: uppercase;
+    .active-filters {
+      color: rgba($white, 0.5);
+    }
     svg {
-      margin-right: 10px;
+      margin-right: 3px;
     }
   }
   .filters {
     padding: 0px 20px;
+    .active-filters {
+      position: absolute;
+      top: -4px;
+      right: 10px;
+      font-size: 14px;
+    }
     h4 {
       margin: 10px 0px;
       color: $white;

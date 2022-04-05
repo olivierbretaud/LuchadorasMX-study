@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from 'react';
 import * as d3 from 'd3';
-import { HiFilter } from 'react-icons/hi';
+import { IoClose } from 'react-icons/io5';
 import dataSet from '../../constants/data.json';
 import styles from './Filters.module.scss';
 import Pie from '../Pie/Pie';
@@ -132,12 +132,13 @@ const Filters = (
         onClick={() => setFilterIsOpen(!filterIsOpen)}
         >
         {filterIsOpen
-          ? <span>CERCA</span>
-          : <span>{calcFilters() && `Filtros ${calcFilters()} &` } Estadísticas</span>
+          ? <><IoClose size={22}/> CERCA</>
+          : <span>Estadísticas {'&'} Filtros<span className={styles['active-filters']}>{calcFilters() && `${calcFilters()}` }</span></span>
         }
       </button>
       {filterIsOpen
         && <div className={styles.filters}>
+          <p className={styles['active-filters']}>{calcFilters() && ` Filtros ${calcFilters()}` }</p>
           <h4>Ideologias {ideologies > 0 && `(${ideologies})`}</h4>
           {stats?.ideologies && <div>
               <Pie data={stats?.ideologies} />
