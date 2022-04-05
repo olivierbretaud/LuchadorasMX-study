@@ -67,10 +67,10 @@ export default function Nodes({ data }: DatavizProps): JSX.Element {
       // .force('y', d3.forceY())
       // .force('collision', d3.forceCollide(10))
       // .alphaTarget(0);
-      .force('center', d3.forceCenter((widthDpr / 2) / dpr, (heightDpr / 2) / dpr))
       .force('x', d3.forceX(widthDpr / 2).strength(0.1))
       .force('y', d3.forceY(heightDpr / 2).strength(0.1))
-      .force('charge', d3.forceManyBody().strength(-130))
+      .force('charge', d3.forceManyBody().strength(-100))
+      .force('center', d3.forceCenter((widthDpr / 2) / dpr, (heightDpr / 2) / dpr))
       .force('link', d3.forceLink().id((d :any) => d.id).strength(1))
       .force('collision', d3.forceCollide().strength(1).radius((d :any) => d.size * 1.4))
       .alphaTarget(0)
