@@ -88,4 +88,13 @@
       }
     }
   }
+  .image-container {
+    position: relative;
+    min-height: 150px;
+    .image {
+      position: relative;
+      width: 100%;
+      min-height: 150px;
+    }
+  }
 }
