@@ -33,7 +33,7 @@ export default function Panel({ post, data, author }: {
         <button
           onClick={() => back()}
           >
-            CERCA <IoClose size={22}/>
+            CERRAR <IoClose size={22}/>
         </button>
       </div>
       {author?.id

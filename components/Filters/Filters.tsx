@@ -132,7 +132,7 @@ const Filters = (
         onClick={() => setFilterIsOpen(!filterIsOpen)}
         >
         {filterIsOpen
-          ? <><IoClose size={22}/> CERCA</>
+          ? <><IoClose size={22}/> CERRAR</>
           : <span>Estadísticas {'&'} Filtros<span className={styles['active-filters']}>{calcFilters() && `${calcFilters()}` }</span></span>
         }
       </button>
