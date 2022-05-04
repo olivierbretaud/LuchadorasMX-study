@@ -5,11 +5,21 @@ import { MdArticle, MdPerson, MdComment } from 'react-icons/md';
 // import Image from 'next/image';
 import styles from './tooltip.module.scss';
 
+type DateTimeFormatOptions = {
+  weekday: string;
+  year: string;
+  month: string;
+  day: string;
+}
+
 export default function Tooltip({ data }: {
   data: any;
 }): JSX.Element {
   const router = useRouter();
   const { name } = router.query;
+  const dateOptions : any = {
+    year: 'numeric', month: '2-digit', day: '2-digit',
+  };
   return (
     <div
       className={`${styles.tooltip} ${data.type ? styles[data.type] : ''}`}
@@ -26,6 +36,7 @@ export default function Tooltip({ data }: {
         {data.type === 'post'
           && <div>
             <p className={styles.category}>categoría : {data.category}</p>
+            {data.date && <p>{Intl.DateTimeFormat('es', dateOptions).format(new Date(data.date))}</p>}
             {data?.postsCount && <p>{data.postsCount} comentarios</p>}
           </div>
         }
@@ -74,6 +85,7 @@ export default function Tooltip({ data }: {
         {data.type === 'comment'
           && <div>
             <p className={styles.name} style={{ color: data.color || 'transparent' }}>{name === 'true' ? data.author.name : data.author.code }</p>
+            {data.date && <p>{Intl.DateTimeFormat('es', dateOptions).format(new Date(data.date))}</p>}
             {data?.comment && <p>{data.comment}</p>}
             {/* {data?.image && <Image src={data.image} alt="emoticone" layout='fill' />}
             {data?.image && console.log(data?.image)} */}
